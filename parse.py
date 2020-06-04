@@ -13,6 +13,7 @@ def parse(test_list):
     """
     res = []
     opt = 1
+    print(test_list.pop(0))
     for i in test_list:
         # print(i)
         pattern = regex.compile(

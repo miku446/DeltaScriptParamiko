@@ -94,7 +94,7 @@ def login(argv):
             #s.prompt()  # match the prompt
             interact.expect(prompt)
             #out1.append(s.before)
-            out1.append(interact.current_output_clean)
+            out1.append(interact.current_output)
             #print(out1[-1])
         # print(s.before)    # print everything before the prompt.
         # s.prompt ()
@@ -107,7 +107,7 @@ def login(argv):
             #s.prompt()  # match the prompt
             interact.expect(prompt)
             #out2.append(s.before)
-            out2.append(interact.current_output_clean)
+            out2.append(interact.current_output)
             # print len(out2)
         # print(s.before)    # print everything before the prompt.
         print("The prompt is " + prompt)
@@ -120,6 +120,8 @@ def login(argv):
             #print(aOut2.decode('utf-8').split("\r")[-2])
             #res_1.append(parse(aOut1.decode('utf-8').split("\r")))
             #res_2.append(parse(aOut2.decode('utf-8').split("\r")))
+            #print(aOut1)
+            #print(aOut2)
             print(aOut1.split("\n")[-2])
             print(aOut2.split("\n")[-2])
             res_1.append(parse(aOut1.split("\n")))
