@@ -44,10 +44,14 @@ def login(argv):
     # hostname = raw_input('hostname: ')
     username = input('username: ')
     password = getpass.getpass('password: ')
+    if username == "":
+        username = "mike"
+    if password == "":
+        password = "test123"
     # if not s.login(hostname, username, password, auto_prompt_reset=False):
     remote_conn_pre = paramiko.SSHClient()
     remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    remote_conn_pre.connect(hostname, username='mike', password='test123', allow_agent=False, look_for_keys=False)
+    remote_conn_pre.connect(hostname, username, password, allow_agent=False, look_for_keys=False)
     if remote_conn_pre.get_transport() is None or not remote_conn_pre.get_transport().is_active():
         print("SSH session failed on login.")
     else:
@@ -72,7 +76,7 @@ def login(argv):
             #s.PROMPT = node_str.split("*")[0] + "#"
             prompt = node_str.split("*")[0]+" "
         print("The prompt is :" + prompt+"\"")
-        remote_conn_pre.connect(hostname, username='mike', password='test123', allow_agent=False, look_for_keys=False)
+        remote_conn_pre.connect(hostname, username, password, allow_agent=False, look_for_keys=False)
         interact = SSHClientInteraction(remote_conn_pre, timeout=20, display=False)
         #time.sleep(5)
         #interact.send('\n')
